@@ -26,3 +26,4 @@ static/js/release
 static/js/dojo
 
 .idea/*
+*/.idea/*
