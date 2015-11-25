@@ -66,7 +66,7 @@ class GetListView(JSONResponseMixin, FormView):
 			return HttpResponse(status=404)
 
 
-class ResourceSingle(JSONResponseMixin, BaseDetailView):
+class ResourceSingle(JSONResponseMixin, FormView):
 
 	form_class = EditForm
 	def get(self, request, *args, **kwargs):
