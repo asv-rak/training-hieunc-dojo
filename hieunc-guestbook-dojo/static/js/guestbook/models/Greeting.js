@@ -3,24 +3,24 @@
  */
 
 define([
-        "dojo/_base/declare",
-        "dojo/_base/lang"
-    ], function (declare, lang) {
-        return declare(null, {
-            greeting_id: -1,
-            content: "",
-            guestbook_name: "",
-            date: "",
-            updated_date: "",
-            updated_by: "",
+			"dojo/_base/declare",
+			"dojo/_base/lang"
+		], function (declare, lang) {
+			return declare("Greeting", null, {
+				greetingId: -1,
+				content: "",
+				guestbookName: "",
+				date: "",
+				updatedDate: "",
+				updatedBy: "",
 
-            constructor: function (/*Object*/ kwArgs) {
-                lang.mixin(this, kwArgs);
-            },
-
-            moveTo: function (/*String*/ residence) {
-                this.residence = residence;
-            }
-        })
-    }
+				constructor: function (/*Object*/ kwArgs) {
+					lang.mixin(this, kwArgs);
+					this.greetingId = kwArgs.greeting_id;
+					this.guestbookName = kwArgs.guestbook_name;
+					this.updatedDate = kwArgs.updated_date;
+					this.updatedBy = kwArgs.updated_by;
+				}
+			})
+		}
 )

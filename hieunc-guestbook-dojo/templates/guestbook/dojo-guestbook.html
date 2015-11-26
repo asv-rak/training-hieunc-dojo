@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dojo Guestbook</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<title>Dojo Guestbook</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 <!--jquery-->
@@ -14,98 +14,98 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <!--dojo-->
-<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js" data-dojo-config="async: true"></script>
+<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+        data-dojo-config="async: true"></script>
 <!--<script src="/static/bootstrap/js/bootstrap.min.js"></script>-->
 
 <script>
-    require([
-        "dojo/parser",
-        "dojo/ready",
-        "/static/js/guestbook/widget/_WidgetGuestBookList.js",
-        "/static/js/guestbook/widget/_WidgetGuestBookSign.js",
-        "/static/js/guestbook/widget/_WidgetGuestBookEdit.js",
-        "/static/js/guestbook/widget/_WidgetGuestBookDel.js"
-    ], function (parser, ready) {
-        ready(function () {
-            parser.parse();
-        });
-    });
+	require([
+		"dojo/parser",
+		"dojo/ready",
+		"/static/js/guestbook/models/Greeting.js",
+		"/static/js/guestbook/widget/_base/_ViewBaseMixin.js",
+		"/static/js/guestbook/widget/_WidgetGuestBookList.js",
+		"/static/js/guestbook/widget/_WidgetGuestBookGreeting.js",
+		"/static/js/guestbook/widget/_WidgetGuestBookSign.js",
+		"/static/js/guestbook/widget/_WidgetGuestBookEdit.js"
+	], function (parser, ready) {
+		ready(function () {
+			parser.parse();
+		});
+	});
 </script>
 <nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">HieuNC GuestBook</a>
-        </div>
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+			        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">HieuNC GuestBook</a>
+		</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
 
-            </ul>
+			</ul>
 
-            <ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
 
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container -->
 </nav>
 
 <div class="col-sm-12">
-    <div class="container">
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active">
-                <a href="#list" aria-controls="list" role="tab"
-                   data-toggle="tab">List</a>
-            </li>
-            <li role="presentation">
-                <a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign</a>
-            </li>
-            <li role="presentation">
-                <a href="#edit" aria-controls="edit" role="tab"
-                   data-toggle="tab">Edit</a>
-            </li>
-            <li role="presentation">
-                <a href="#del" aria-controls="del" role="tab"
-                   data-toggle="tab">Delete</a>
-            </li>
-        </ul>
+	<div class="container">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active">
+				<a href="#list" aria-controls="list" role="tab"
+				   data-toggle="tab">List</a>
+			</li>
+			<li role="presentation">
+				<a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign</a>
+			</li>
+			<li role="presentation">
+				<a href="#edit" aria-controls="edit" role="tab"
+				   data-toggle="tab">Edit</a>
+			</li>
+			<li role="presentation">
+				<a href="#del" aria-controls="del" role="tab"
+				   data-toggle="tab">Delete</a>
+			</li>
+		</ul>
 
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="list">
-                <div data-dojo-type="GuestBookList"></div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="sign">
-                <div data-dojo-type="GuestBookSign"></div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="edit">
-                <div data-dojo-type="GuestBookEdit"></div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="del">
-                <div data-dojo-type="GuestBookDel"></div>
-            </div>
-        </div>
-    </div>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="list">
+				<div data-dojo-type="_WidgetGuestBookList"></div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="sign">
+				<div data-dojo-type="_WidgetGuestBookSign"></div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="edit">
+				<div data-dojo-type="_WidgetGuestBookEdit"></div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="col-sm-12">
-    <div class="container">
-        <footer class="navbar navbar-inverse navbar-fixed-bottom">
-            <p class="text-center" style="margin-top: 15px; color: #fff">
-                <i class="glyphicon glyphicon-copyright-mark"></i>
-                Copyright HieuNC
-            </p>
-        </footer>
-    </div>
+	<div class="container">
+		<footer class="navbar navbar-inverse navbar-fixed-bottom">
+			<p class="text-center" style="margin-top: 15px; color: #fff">
+				<i class="glyphicon glyphicon-copyright-mark"></i>
+				Copyright HieuNC
+			</p>
+		</footer>
+	</div>
 </div>
 
 

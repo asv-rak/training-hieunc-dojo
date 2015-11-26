@@ -3,42 +3,45 @@
  */
 
 define([
-    "dojo/_base/declare",
-    "dijit/_WidgetBase",
-    "dijit/_TemplatedMixin",
-    "dojo/text!./templates/guestbook_edit.html",
-    "dojo/request",
-    "dojo/cookie"
-], function (declare, _WidgetBase, _TemplatedMixin, template, request, cookie) {
-    return declare("GuestBookEdit", [_WidgetBase, _TemplatedMixin], {
-        templateString: template,
-        editGreeting: function () {
-            if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
-                var greeting = {
-                    "guestbook_name": this.GuestBookNameNode.value,
-                    "guestbook_mesage": this.GuestBookGreetingNameNode.value,
-                    "greeting_id": this.GuestBookGreetingIdNode.value
-                };
+	"dojo/_base/declare",
+	"my/_ViewBaseMixin",
+	"dojo/text!./templates/_WidgetGuestBookEdit.html",
+	"dojo/cookie"
+], function (declare, _ViewBaseMixin, template, cookie) {
+	return declare("_WidgetGuestBookEdit", [_ViewBaseMixin], {
 
-                request.put("/api/guestbook/" + this.GuestBookNameNode.value + "/greeting/" + this.GuestBookGreetingIdNode.value, {
-                    data: greeting,
-                    headers: {
-                        "X-CSRFToken": cookie("csrftoken")
-                    }
-                    ,
-                    handleAs: "json"
-                }).
-                then(
-                    function (data) {
-                        alert("Edit greeting success!")
-                    },
-                    function (error) {
-                        alert("Edit greeting failed!")
-                    }
-                );
-            } else {
-                alert("Validate failed!")
-            }
-        }
-    });
+		constructor: function (kwArgs) {
+			this.inherited("constructor", arguments);
+			this.templateString = template;
+		},
+
+		editGreeting: function () {
+			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
+				var greeting = {
+					"guestbook_name": this.GuestBookNameNode.value,
+					"guestbook_mesage": this.GuestBookGreetingNameNode.value,
+					"greeting_id": this.GuestBookGreetingIdNode.value
+				};
+
+				this.request.put("/api/guestbook/" + greeting.guestbook_name + "/greeting/" + greeting.greeting_id, {
+					data: greeting,
+					headers: {
+						"X-CSRFToken": cookie("csrftoken")
+					}
+					,
+					handleAs: "json"
+				}).
+				then(
+						function (data) {
+							alert("Edit greeting success!")
+						},
+						function (error) {
+							alert("Edit greeting failed!")
+						}
+				);
+			} else {
+				alert("Validate failed!")
+			}
+		}
+	});
 });
