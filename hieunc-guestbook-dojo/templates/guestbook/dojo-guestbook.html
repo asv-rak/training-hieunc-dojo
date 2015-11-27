@@ -3,16 +3,18 @@
 <head>
 	<title>Dojo Guestbook</title>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet"
+	      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet"
+	      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
 <!--jquery-->
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--dojo-->
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
         data-dojo-config="async: true"></script>
@@ -23,6 +25,7 @@
 		"dojo/parser",
 		"dojo/ready",
 		"/static/js/guestbook/models/Greeting.js",
+		"/static/js/guestbook/store/_ApiRequest.js",
 		"/static/js/guestbook/widget/_base/_ViewBaseMixin.js",
 		"/static/js/guestbook/widget/_WidgetGuestBookList.js",
 		"/static/js/guestbook/widget/_WidgetGuestBookGreeting.js",
@@ -75,10 +78,6 @@
 			<li role="presentation">
 				<a href="#edit" aria-controls="edit" role="tab"
 				   data-toggle="tab">Edit</a>
-			</li>
-			<li role="presentation">
-				<a href="#del" aria-controls="del" role="tab"
-				   data-toggle="tab">Delete</a>
 			</li>
 		</ul>
 

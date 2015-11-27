@@ -23,22 +23,21 @@ define([
 					"greeting_id": this.GuestBookGreetingIdNode.value
 				};
 
-				this.request.put("/api/guestbook/" + greeting.guestbook_name + "/greeting/" + greeting.greeting_id, {
-					data: greeting,
-					headers: {
-						"X-CSRFToken": cookie("csrftoken")
+				var _editApiRequest = new _ApiRequest({
+					url: "/api/guestbook/" + greeting.guestbook_name + "/greeting/" + greeting.greeting_id,
+					headers: {"X-CSRFToken": cookie("csrftoken")},
+					method: "put", //get,post,put,del
+					postData: greeting,
+					expect: "httpStatus", //{json,httpStatus}
+					callBack: function (e) {
+						console.log(e)
+					},
+					errCallBack: function (err) {
+						alert("Failed to delete greeting !")
 					}
-					,
-					handleAs: "json"
-				}).
-				then(
-						function (data) {
-							alert("Edit greeting success!")
-						},
-						function (error) {
-							alert("Edit greeting failed!")
-						}
-				);
+				});
+				_editApiRequest.getResult();
+				alert("Edit greeting success!")
 			} else {
 				alert("Validate failed!")
 			}

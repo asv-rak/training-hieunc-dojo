@@ -34,23 +34,22 @@ define([
 
 		delete: function () {
 			var self = this;
-			request.del("/api/guestbook/" + this.greeting.guestbookName + "/greeting/" + this.greeting.greetingId, {
-				headers: {
-					"X-CSRFToken": cookie("csrftoken")
-				}
-			}).
-			then(
-					function (data) {
-						self.domNode.remove()
-					},
-					function (error) {
-						alert("Delete Greeting failed!")
-					}
-			)
-		},
 
-		edit: function () {
-			alert('abc');
+			var _delApiRequest = new _ApiRequest({
+				url: "/api/guestbook/" + this.greeting.guestbookName + "/greeting/" + this.greeting.greetingId,
+				headers: {"X-CSRFToken": cookie("csrftoken")},
+				method: "del", //get,post,put,del
+				expect: "httpStatus", //{json,httpStatus}
+				callBack: function (e) {
+					console.log()
+				},
+				errCallBack: function (err) {
+					alert("Failed to delete greeting !")
+				}
+			});
+
+			_delApiRequest.getResult();
+			self.domNode.remove()
 		}
 	});
 });
