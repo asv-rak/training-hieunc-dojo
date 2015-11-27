@@ -8,11 +8,9 @@ define("my/_ViewBaseMixin", [
 	'dijit/_TemplatedMixin',
 	'dijit/_WidgetsInTemplateMixin',
 	"dojo/dom-construct",
-	"dojo/request/xhr"
-], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, domConstruct, request) {
+], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, domConstruct) {
 
 	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
-		request: request,
 		domConstruct: domConstruct,
 
 		buildRendering: function () {

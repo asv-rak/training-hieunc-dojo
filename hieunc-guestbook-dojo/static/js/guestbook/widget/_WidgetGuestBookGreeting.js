@@ -7,8 +7,7 @@ define([
 	"my/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookGreeting.html",
 	"dojo/cookie",
-	"dojo/request"
-], function (declare, _ViewBaseMixin, template, cookie, request) {
+], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		greeting: '',
 
