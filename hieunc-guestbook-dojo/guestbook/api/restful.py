@@ -1,8 +1,6 @@
 import json
-import logging
-from django import forms
 from django.http import HttpResponse, QueryDict
-from django.views.generic.edit import FormView, BaseDetailView
+from django.views.generic.edit import FormView
 from guestbook.models import Greeting, Guestbook
 from guestbook.forms import SignForm, EditForm
 
@@ -23,9 +21,9 @@ class GetListView(JSONResponseMixin, FormView):
 
 	form_class = SignForm
 	def get(self, request, *args, **kwargs):
-		guestbook_name = kwargs.get('guestbook_name',Guestbook.get_default_guestbook())
-		url_safe = kwargs.get('cursor')
-		greetings, next_cursor, is_more = Greeting.greeting_to_dict(
+		guestbook_name = self.request.GET.get('guestbook_name',Guestbook.get_default_guestbook())
+		url_safe = self.request.GET.get('cursor')
+		greetings, next_cursor, is_more = Greeting.get_greeting_with_cursor(
 			url_safe=url_safe,
 			guestbook_name=guestbook_name,
 		)
@@ -66,17 +64,18 @@ class GetListView(JSONResponseMixin, FormView):
 			return HttpResponse(status=404)
 
 
-class ResourceSingle(JSONResponseMixin, BaseDetailView):
+class ResourceSingle(JSONResponseMixin, FormView):
 
 	form_class = EditForm
+
 	def get(self, request, *args, **kwargs):
 		guestbook_name = kwargs.get('guestbook_name',Guestbook.get_default_guestbook())
 		greeting_id = kwargs.get('id', None)
 		greeting = Greeting.get_greeting(guestbook_name, greeting_id)
 		if not greeting:
 			return HttpResponse(status=404)
-		data = Greeting.to_dict( greeting, guestbook_name);
-		return self.render_to_response(data)
+		context = Greeting.to_dict( greeting, guestbook_name)
+		return self.render_to_response(context)
 
 	def put(self, request, *args, **kwargs):
 
@@ -112,7 +111,7 @@ class ResourceSingle(JSONResponseMixin, BaseDetailView):
 		guestbook_name = kwargs.get('guestbook_name',Guestbook.get_default_guestbook())
 		greeting_id = kwargs.get('id', None)
 		detete_greeting_key = Greeting.delete_greeting(guestbook_name, greeting_id)
-		if detete_greeting_key is None:
+		if detete_greeting_key is True:
 			return HttpResponse(status=204)
 		else:
 			return HttpResponse(status=404)
