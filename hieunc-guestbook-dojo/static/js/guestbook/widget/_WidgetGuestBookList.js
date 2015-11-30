@@ -7,8 +7,7 @@ define([
 	"guestbook/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookList.html",
 	"dojo/_base/array",
-	"dojo/when"
-], function (declare, _ViewBaseMixin, template, array, when) {
+], function (declare, _ViewBaseMixin, template, array) {
 	return declare("_WidgetGuestBookList", [_ViewBaseMixin], {
 		constructor: function (/*Object*/ kwArgs) {
 			this.inherited(arguments);
