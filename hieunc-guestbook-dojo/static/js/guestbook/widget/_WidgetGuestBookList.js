@@ -6,7 +6,7 @@ define([
 	"dojo/_base/declare",
 	"guestbook/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookList.html",
-	"dojo/_base/array",
+	"dojo/_base/array"
 ], function (declare, _ViewBaseMixin, template, array) {
 	return declare("_WidgetGuestBookList", [_ViewBaseMixin], {
 		constructor: function (/*Object*/ kwArgs) {

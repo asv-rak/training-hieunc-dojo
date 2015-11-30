@@ -7,11 +7,10 @@ define("guestbook/_ViewBaseMixin", [
 	'dijit/_WidgetBase',
 	'dijit/_TemplatedMixin',
 	'dijit/_WidgetsInTemplateMixin',
-	"dojo/dom-construct",
-	"dojo/Stateful"
+	"dojo/dom-construct"
 ], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, domConstruct) {
 
-	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Stateful], {
+	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 		domConstruct: domConstruct,
 
 		buildRendering: function () {
