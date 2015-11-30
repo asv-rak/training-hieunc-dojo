@@ -4,17 +4,22 @@
 
 define([
 	"dojo/_base/declare",
-	"my/_ViewBaseMixin",
+	"guestbook/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookGreeting.html",
 	"dojo/cookie",
 ], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		greeting: '',
+		widgetGuestBookGetListParent: '',
 
 		constructor: function (kwArgs) {
-			this.inherited("constructor", arguments);
+			this.inherited(arguments);
 			this.templateString = template;
-			this.greeting = new Greeting(kwArgs);
+			this.greeting = new guestbook.models.Greeting(kwArgs);
+		},
+
+		setWidgetGuestBookGetListParent: function (instance) {
+			this.widgetGuestBookGetListParent = instance;
 		},
 
 		buildRendering: function () {
@@ -23,7 +28,7 @@ define([
 		},
 
 		_appenData: function () {
-			this.GreetingIdNode.innerHTML = this.greeting.greetingId;
+			this.GreetingIdNode.value = this.greeting.greetingId;
 			this.GreetingContentNode.innerHTML = this.greeting.content;
 			this.GreetingGuestbookNameNode.innerHTML = this.greeting.guestbookName;
 			this.GreetingDateNode.innerHTML = this.greeting.date;
@@ -31,14 +36,14 @@ define([
 			this.GreetingUpdatedByNode.innerHTML = this.greeting.updatedBy;
 		},
 
+		makeEditForm: function () {
+			this.widgetGuestBookGetListParent.generateEditForm(this.greeting);
+		},
+
 		delete: function () {
 			var self = this;
 
-			var _delApiRequest = new _ApiRequest({
-				url: "/api/guestbook/" + this.greeting.guestbookName + "/greeting/" + this.greeting.greetingId,
-				headers: {"X-CSRFToken": cookie("csrftoken")},
-				method: "del", //get,post,put,del
-				expect: "httpStatus", //{json,httpStatus}
+			var _delApiRequest = new _GreetingStore({
 				callBack: function (e) {
 					console.log()
 				},
@@ -47,7 +52,7 @@ define([
 				}
 			});
 
-			_delApiRequest.getResult();
+			_delApiRequest.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId, cookie("csrftoken"));
 			self.domNode.remove()
 		}
 	});

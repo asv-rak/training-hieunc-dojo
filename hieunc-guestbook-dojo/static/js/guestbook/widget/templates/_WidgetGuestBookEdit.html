@@ -1,44 +1,31 @@
-<div class="col-sm-12">
+<div>
+	<h2>Edit Form</h2>
+
 	<div class="col-sm-12" style="padding: 0; margin-top: 25px;">
+
+		<input data-dojo-attach-point="GuestBookNameNode"
+		       value="default_guestbook"
+		       type="hidden"/>
+
+		<input data-dojo-attach-point="GuestBookGreetingIdNode"
+		       value=""
+		       type="hidden"/>
+
 		<div class="col-sm-12">
-			<div class="col-sm-2" style="margin-bottom: 20px;">
-				<label class="text-capitalize text-center">Guestbook Name</label>
-			</div>
-			<div class="col-sm-10">
-				<input data-dojo-attach-point="GuestBookNameNode"
-				       value="default_guestbook"
-				       type="text" class="form-control"
-				       placeholder="Guestbook name"/>
-			</div>
-		</div>
-
-		<div class="col-sm-12" style="margin-bottom: 20px;">
-			<div class="col-sm-2">
-				<label class="text-capitalize text-center">Greeting Id</label>
-			</div>
-			<div class="col-sm-10">
-				<input data-dojo-attach-point="GuestBookGreetingIdNode"
-				       value=""
-				       type="text" class="form-control"
-				       placeholder="Greeting id"/>
-			</div>
-		</div>
-
-		<div class="col-sm-12" style="margin-bottom: 20px;">
-			<div class="col-sm-2">
+			<div class="col-sm-12" style="padding-left: 0">
 				<label class="text-capitalize text-center">Greeting Name</label>
 			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-6" style="padding-left: 0;">
 				<input data-dojo-attach-point="GuestBookGreetingNameNode"
 				       value=""
 				       type="text" class="form-control"
 				       placeholder="Greeting name"/>
 			</div>
-		</div>
-		<div class="col-sm-12 text-center">
-			<button data-dojo-attach-event="onclick: editGreeting" class="btn btn-success">Edit
-				Greeting
-			</button>
+			<div class="col-sm-6">
+				<button data-dojo-attach-event="onclick: editGreeting" class="btn btn-success">
+					Save
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

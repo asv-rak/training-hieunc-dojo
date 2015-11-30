@@ -11,10 +11,6 @@
 	      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
-<!--jquery-->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--dojo-->
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
         data-dojo-config="async: true"></script>
@@ -25,7 +21,7 @@
 		"dojo/parser",
 		"dojo/ready",
 		"/static/js/guestbook/models/Greeting.js",
-		"/static/js/guestbook/store/_ApiRequest.js",
+		"/static/js/guestbook/store/_GreetingStore.js",
 		"/static/js/guestbook/widget/_base/_ViewBaseMixin.js",
 		"/static/js/guestbook/widget/_WidgetGuestBookList.js",
 		"/static/js/guestbook/widget/_WidgetGuestBookGreeting.js",
@@ -66,33 +62,7 @@
 
 <div class="col-sm-12">
 	<div class="container">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active">
-				<a href="#list" aria-controls="list" role="tab"
-				   data-toggle="tab">List</a>
-			</li>
-			<li role="presentation">
-				<a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign</a>
-			</li>
-			<li role="presentation">
-				<a href="#edit" aria-controls="edit" role="tab"
-				   data-toggle="tab">Edit</a>
-			</li>
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="list">
-				<div data-dojo-type="_WidgetGuestBookList"></div>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="sign">
-				<div data-dojo-type="_WidgetGuestBookSign"></div>
-			</div>
-			<div role="tabpanel" class="tab-pane" id="edit">
-				<div data-dojo-type="_WidgetGuestBookEdit"></div>
-			</div>
-		</div>
+		<div data-dojo-type="_WidgetGuestBookList"></div>
 	</div>
 </div>
 
