@@ -6,7 +6,7 @@ define([
 	"dojo/_base/declare",
 	"guestbook/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookGreeting.html",
-	"dojo/cookie",
+	"dojo/cookie"
 ], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		greeting: '',
@@ -20,20 +20,6 @@ define([
 
 		setWidgetGuestBookGetListParent: function (instance) {
 			this.widgetGuestBookGetListParent = instance;
-		},
-
-		buildRendering: function () {
-			this.inherited(arguments);
-			this._appenData()
-		},
-
-		_appenData: function () {
-			this.GreetingIdNode.value = this.greeting.greetingId;
-			this.GreetingContentNode.innerHTML = this.greeting.content;
-			this.GreetingGuestbookNameNode.innerHTML = this.greeting.guestbookName;
-			this.GreetingDateNode.innerHTML = this.greeting.date;
-			this.GreetingUpdatedDateNode.innerHTML = this.greeting.updatedDate;
-			this.GreetingUpdatedByNode.innerHTML = this.greeting.updatedBy;
 		},
 
 		makeEditForm: function () {

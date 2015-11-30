@@ -1,10 +1,10 @@
 <tr>
-	<input type="hidden" data-dojo-attach-point="GreetingIdNode" value=""/>
-	<td data-dojo-attach-point="GreetingContentNode">Nobody</td>
-	<td data-dojo-attach-point="GreetingGuestbookNameNode">default_guestbook</td>
-	<td data-dojo-attach-point="GreetingDateNode">2015-11-25 09:31:32.168548</td>
-	<td data-dojo-attach-point="GreetingUpdatedDateNode">2015-11-25 10:35:57.619136</td>
-	<td data-dojo-attach-point="GreetingUpdatedByNode">None</td>
+	<input type="hidden" data-dojo-attach-point="GreetingIdNode" value="${greeting.greetingId}"/>
+	<td data-dojo-attach-point="GreetingContentNode">${greeting.content}</td>
+	<td data-dojo-attach-point="GreetingGuestbookNameNode">${greeting.guestbookName}</td>
+	<td data-dojo-attach-point="GreetingDateNode">${greeting.date}</td>
+	<td data-dojo-attach-point="GreetingUpdatedDateNode">${greeting.updatedDate}</td>
+	<td data-dojo-attach-point="GreetingUpdatedByNode">${greeting.updatedBy}</td>
 	<td>
 		<a href="javascript: void(0)" data-dojo-attach-event="onclick: makeEditForm">
 			<i class="glyphicon glyphicon-pencil"></i> Edit

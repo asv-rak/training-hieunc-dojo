@@ -4,11 +4,10 @@
 	<div class="col-sm-12" style="padding: 0; margin-top: 25px;">
 
 		<input data-dojo-attach-point="GuestBookNameNode"
-		       value="default_guestbook"
-		       type="hidden"/>
+		       type="hidden" value="${greeting.guestbookName}"/>
 
 		<input data-dojo-attach-point="GuestBookGreetingIdNode"
-		       value=""
+		       value="${greeting.greetingId}"
 		       type="hidden"/>
 
 		<div class="col-sm-12">
@@ -17,7 +16,7 @@
 			</div>
 			<div class="col-sm-6" style="padding-left: 0;">
 				<input data-dojo-attach-point="GuestBookGreetingNameNode"
-				       value=""
+				       value="${greeting.content}"
 				       type="text" class="form-control"
 				       placeholder="Greeting name"/>
 			</div>

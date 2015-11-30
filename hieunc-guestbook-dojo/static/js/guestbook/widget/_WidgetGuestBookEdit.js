@@ -19,17 +19,6 @@ define([
 			this.widgetGuestBookGetListParent = kwArgs.widgetGuestBookGetListParent;
 		},
 
-		buildRendering: function () {
-			this.inherited(arguments);
-			this._appenData()
-		},
-
-		_appenData: function () {
-			this.GuestBookGreetingIdNode.value = this.greeting.greetingId;
-			this.GuestBookGreetingNameNode.value = this.greeting.content;
-			this.GuestBookNameNode.value = this.greeting.guestbookName;
-		},
-
 		editGreeting: function () {
 			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
 				this.greeting.content = this.GuestBookGreetingNameNode.value;
