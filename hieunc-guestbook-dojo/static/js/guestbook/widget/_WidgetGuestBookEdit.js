@@ -22,12 +22,12 @@ define([
 		editGreeting: function () {
 			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
 				this.greeting.content = this.GuestBookGreetingNameNode.value;
-				var greetingStore = new _GreetingStore({
-					callBack: function (e) {
-						console.log(e)
+				var greetingStore = new GreetingStore({
+					callBack: function (result) {
+						console.log(result)
 					},
 					errCallBack: function (err) {
-						alert("Failed to delete greeting !")
+						console.log(err)
 					}
 				});
 				greetingStore.updateGreeting(this.greeting);

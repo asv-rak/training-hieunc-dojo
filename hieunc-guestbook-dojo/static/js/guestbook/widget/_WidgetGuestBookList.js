@@ -32,7 +32,7 @@ define([
 				var _domConstruct = this.domConstruct;
 				var widgetGuestBookGetListParent = this;
 				this.guestbook_list_header.innerHTML = this.GuestBookNameNode.value;
-				var greetingStore = new _GreetingStore({
+				var greetingStore = new GreetingStore({
 					callBack: function (data) {
 						var greeting;
 						array.forEach(data.greetings, function (jsonGreeting) {
@@ -42,7 +42,7 @@ define([
 						});
 					},
 					errCallBack: function (err) {
-						alert("Failed to get data !")
+						console.log(err)
 					}
 				});
 				greetingStore.getGreetingList(this.GuestBookNameNode.value);

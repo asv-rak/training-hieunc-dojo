@@ -6,10 +6,10 @@ define([
 	"dojo/_base/declare",
 	"guestbook/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookGreeting.html",
-	"dojo/cookie"
+	"guestbook/models/Greeting"
 ], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
-		templateString:template,
+		templateString: template,
 		greeting: '',
 		widgetGuestBookGetListParent: '',
 
@@ -33,12 +33,12 @@ define([
 		delete: function () {
 			var self = this;
 			if (this.greeting.isAdmin || this.greeting.updatedBy == this.greeting.userInfo) {
-				var greetingStore = new _GreetingStore({
-					callBack: function (e) {
-						console.log()
+				var greetingStore = new GreetingStore({
+					callBack: function (result) {
+						console.log(result)
 					},
 					errCallBack: function (err) {
-						alert("Failed to delete greeting !")
+						console.log(err)
 					}
 				});
 

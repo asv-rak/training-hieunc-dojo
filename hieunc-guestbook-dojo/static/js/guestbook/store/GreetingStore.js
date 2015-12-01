@@ -15,7 +15,7 @@ define([
 		method: "get", //get,post,put,del
 		postData: {},
 		handleAs: "json",
-		expect: "json", //{json,httpStatus}
+		expect: "", //{json,httpStatus}
 
 		callBack: function (result) {
 		},
@@ -45,9 +45,11 @@ define([
 						}
 					},
 					function (error) {
-						_def.resolve(error);
+						console.log(error);
 					},
 					function (e) {
+						console.log(e);
+						console.log(_self.expect);
 						if (_self.expect === "httpStatus") {
 							console.log(e);
 							_def.resolve(e);
@@ -58,9 +60,9 @@ define([
 
 		getGreetingList: function (guestbook_name) {
 			this.url = "/api/guestbook/" + guestbook_name + "/greeting/";
-			this.method = "get"; //get,post,put,del
+			this.method = "get";
 			this.handleAs = "json";
-			this.expect = "json"; //{json,httpStatus}
+			this.expect = "json";
 			this._getResult();
 		},
 
@@ -69,6 +71,7 @@ define([
 			this.headers = {"X-CSRFToken": cookie("csrftoken")};
 			this.method = "del";
 			this.expect = "httpStatus";
+			this.handleAs = "";
 			this._getResult();
 		},
 

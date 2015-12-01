@@ -8,7 +8,7 @@ define([
 	"dojo/text!./templates/_WidgetGuestBookSign.html"
 ], function (declare, _ViewBaseMixin, template) {
 	return declare("_WidgetGuestBookSign", [_ViewBaseMixin], {
-		templateString:template,
+		templateString: template,
 		_guesbookName: "guestbook_default",
 		_parentWidget: "",
 
@@ -29,12 +29,12 @@ define([
 					"guestbook_name": this.GuestBookNameNode.value
 				};
 
-				var greetingStore = new _GreetingStore({
-					callBack: function (e) {
-						console.log(e)
+				var greetingStore = new GreetingStore({
+					callBack: function (result) {
+						console.log(result)
 					},
 					errCallBack: function (err) {
-						alert("Failed to delete greeting !")
+						alert(err)
 					}
 				});
 
