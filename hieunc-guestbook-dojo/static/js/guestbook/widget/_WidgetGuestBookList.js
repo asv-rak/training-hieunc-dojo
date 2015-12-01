@@ -9,9 +9,9 @@ define([
 	"dojo/_base/array"
 ], function (declare, _ViewBaseMixin, template, array) {
 	return declare("_WidgetGuestBookList", [_ViewBaseMixin], {
+		templateString:template,
 		constructor: function (/*Object*/ kwArgs) {
 			this.inherited(arguments);
-			this.templateString = template;
 		},
 
 		postCreate: function () {
@@ -32,12 +32,12 @@ define([
 				var _domConstruct = this.domConstruct;
 				var widgetGuestBookGetListParent = this;
 				this.guestbook_list_header.innerHTML = this.GuestBookNameNode.value;
-				var _listApiRequest = new _GreetingStore({
+				var greetingStore = new _GreetingStore({
 					callBack: function (data) {
 						var greeting;
 						array.forEach(data.greetings, function (jsonGreeting) {
 							greeting = new _WidgetGuestBookGreeting(jsonGreeting);
-							greeting.setWidgetGuestBookGetListParent(widgetGuestBookGetListParent);
+							greeting.setWidgetGuestBookList(widgetGuestBookGetListParent);
 							_domConstruct.place(greeting.domNode, listContent);
 						});
 					},
@@ -45,7 +45,7 @@ define([
 						alert("Failed to get data !")
 					}
 				});
-				_listApiRequest.getGrettingList(this.GuestBookNameNode.value);
+				greetingStore.getGreetingList(this.GuestBookNameNode.value);
 			}
 		},
 

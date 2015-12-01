@@ -9,11 +9,11 @@ define([
 	"dojo/cookie"
 ], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookEdit", [_ViewBaseMixin], {
+		templateString: template,
 		greeting: '',
 		widgetGuestBookGetListParent: '',
 
 		constructor: function (kwArgs) {
-			this.inherited(arguments);
 			this.templateString = template;
 			this.greeting = kwArgs.greeting;
 			this.widgetGuestBookGetListParent = kwArgs.widgetGuestBookGetListParent;
@@ -22,7 +22,7 @@ define([
 		editGreeting: function () {
 			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
 				this.greeting.content = this.GuestBookGreetingNameNode.value;
-				var _editApiRequest = new _GreetingStore({
+				var greetingStore = new _GreetingStore({
 					callBack: function (e) {
 						console.log(e)
 					},
@@ -30,7 +30,7 @@ define([
 						alert("Failed to delete greeting !")
 					}
 				});
-				_editApiRequest.updateGreeting(this.greeting, cookie("csrftoken"));
+				greetingStore.updateGreeting(this.greeting);
 				this.widgetGuestBookGetListParent.getList();
 				this.domNode.remove();
 				alert("Edit greeting success!")

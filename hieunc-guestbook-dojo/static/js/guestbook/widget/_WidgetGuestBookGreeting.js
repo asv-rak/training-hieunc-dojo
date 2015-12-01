@@ -9,16 +9,16 @@ define([
 	"dojo/cookie"
 ], function (declare, _ViewBaseMixin, template, cookie) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
+		templateString:template,
 		greeting: '',
 		widgetGuestBookGetListParent: '',
 
 		constructor: function (kwArgs) {
 			this.inherited(arguments);
-			this.templateString = template;
 			this.greeting = new guestbook.models.Greeting(kwArgs);
 		},
 
-		setWidgetGuestBookGetListParent: function (instance) {
+		setWidgetGuestBookList: function (instance) {
 			this.widgetGuestBookGetListParent = instance;
 		},
 
@@ -33,7 +33,7 @@ define([
 		delete: function () {
 			var self = this;
 			if (this.greeting.isAdmin || this.greeting.updatedBy == this.greeting.userInfo) {
-				var _delApiRequest = new _GreetingStore({
+				var greetingStore = new _GreetingStore({
 					callBack: function (e) {
 						console.log()
 					},
@@ -42,7 +42,7 @@ define([
 					}
 				});
 
-				_delApiRequest.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId, cookie("csrftoken"));
+				greetingStore.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId);
 				self.domNode.remove()
 			} else {
 				alert("Permission denied!")
