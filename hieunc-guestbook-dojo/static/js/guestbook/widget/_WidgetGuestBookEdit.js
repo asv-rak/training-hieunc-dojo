@@ -19,12 +19,9 @@ define([
 			this.widgetGuestBookGetListParent = kwArgs.widgetGuestBookGetListParent;
 		},
 
-
-
 		editGreeting: function () {
 			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value && this.GuestBookGreetingIdNode.value) {
 				this.greeting.content = this.GuestBookGreetingNameNode.value;
-
 				var _editApiRequest = new _GreetingStore({
 					callBack: function (e) {
 						console.log(e)

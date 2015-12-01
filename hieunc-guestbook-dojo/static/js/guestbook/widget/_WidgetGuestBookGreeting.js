@@ -23,23 +23,30 @@ define([
 		},
 
 		makeEditForm: function () {
-			this.widgetGuestBookGetListParent.generateEditForm(this.greeting);
+			if (this.greeting.isAdmin || this.greeting.updatedBy == this.greeting.userInfo) {
+				this.widgetGuestBookGetListParent.generateEditForm(this.greeting);
+			} else {
+				alert("Permission denied!")
+			}
 		},
 
 		delete: function () {
 			var self = this;
+			if (this.greeting.isAdmin || this.greeting.updatedBy == this.greeting.userInfo) {
+				var _delApiRequest = new _GreetingStore({
+					callBack: function (e) {
+						console.log()
+					},
+					errCallBack: function (err) {
+						alert("Failed to delete greeting !")
+					}
+				});
 
-			var _delApiRequest = new _GreetingStore({
-				callBack: function (e) {
-					console.log()
-				},
-				errCallBack: function (err) {
-					alert("Failed to delete greeting !")
-				}
-			});
-
-			_delApiRequest.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId, cookie("csrftoken"));
-			self.domNode.remove()
+				_delApiRequest.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId, cookie("csrftoken"));
+				self.domNode.remove()
+			} else {
+				alert("Permission denied!")
+			}
 		}
 	});
 });
