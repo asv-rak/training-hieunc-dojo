@@ -1,7 +1,7 @@
 /**
  * Created by hieunc on 25/11/2015.
  */
-define("guestbook/_ViewBaseMixin", [
+define([
 	'dojo/_base/declare',
 	'dojo/dom-class',
 	'dijit/_WidgetBase',

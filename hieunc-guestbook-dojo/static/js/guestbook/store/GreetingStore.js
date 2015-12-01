@@ -48,8 +48,6 @@ define([
 						console.log(error);
 					},
 					function (e) {
-						console.log(e);
-						console.log(_self.expect);
 						if (_self.expect === "httpStatus") {
 							console.log(e);
 							_def.resolve(e);

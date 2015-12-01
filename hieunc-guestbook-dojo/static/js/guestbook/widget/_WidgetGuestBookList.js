@@ -4,19 +4,22 @@
 
 define([
 	"dojo/_base/declare",
-	"guestbook/_ViewBaseMixin",
+	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookList.html",
-	"dojo/_base/array"
-], function (declare, _ViewBaseMixin, template, array) {
+	"dojo/_base/array",
+	"guestbook/widget/_WidgetGuestBookGreeting",
+	"guestbook/widget/_WidgetGuestBookSign",
+	"guestbook/widget/_WidgetGuestBookEdit"
+], function (declare, _ViewBaseMixin, template, array, WidgetGuestBookGreeting,WidgetGuestBookSign,WidgetGuestBookEdit) {
 	return declare("_WidgetGuestBookList", [_ViewBaseMixin], {
-		templateString:template,
+		templateString: template,
 		constructor: function (/*Object*/ kwArgs) {
 			this.inherited(arguments);
 		},
 
 		postCreate: function () {
 			this.inherited(arguments);
-			var guestbookSignWidget = new _WidgetGuestBookSign({
+			var guestbookSignWidget = new WidgetGuestBookSign({
 						widgetGuestBookGetListParent: this,
 						guestbook_name: this.GuestBookNameNode.value
 					})
@@ -36,7 +39,7 @@ define([
 					callBack: function (data) {
 						var greeting;
 						array.forEach(data.greetings, function (jsonGreeting) {
-							greeting = new _WidgetGuestBookGreeting(jsonGreeting);
+							greeting = new WidgetGuestBookGreeting(jsonGreeting);
 							greeting.setWidgetGuestBookList(widgetGuestBookGetListParent);
 							_domConstruct.place(greeting.domNode, listContent);
 						});
@@ -50,7 +53,7 @@ define([
 		},
 
 		generateEditForm: function (greeting) {
-			var guesbookEditWidget = new _WidgetGuestBookEdit({
+			var guesbookEditWidget = new WidgetGuestBookEdit({
 				"greeting": greeting,
 				"widgetGuestBookGetListParent": this
 			});

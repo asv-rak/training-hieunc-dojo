@@ -4,10 +4,12 @@
 
 define([
 	"dojo/_base/declare",
-	"guestbook/_ViewBaseMixin",
+	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookGreeting.html",
-	"guestbook/models/Greeting"
-], function (declare, _ViewBaseMixin, template, cookie) {
+	"guestbook/models/Greeting",
+	"guestbook/store/GreetingStore"
+	//"models/Greeting"
+], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore) {
 	return declare("_WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		templateString: template,
 		greeting: '',
@@ -15,7 +17,7 @@ define([
 
 		constructor: function (kwArgs) {
 			this.inherited(arguments);
-			this.greeting = new guestbook.models.Greeting(kwArgs);
+			this.greeting = new Greeting(kwArgs);
 		},
 
 		setWidgetGuestBookList: function (instance) {

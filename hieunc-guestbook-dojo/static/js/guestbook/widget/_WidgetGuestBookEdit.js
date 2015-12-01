@@ -4,10 +4,11 @@
 
 define([
 	"dojo/_base/declare",
-	"guestbook/_ViewBaseMixin",
+	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/_WidgetGuestBookEdit.html",
-	"dojo/cookie"
-], function (declare, _ViewBaseMixin, template, cookie) {
+	"guestbook/models/Greeting",
+	"guestbook/store/GreetingStore"
+], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore) {
 	return declare("_WidgetGuestBookEdit", [_ViewBaseMixin], {
 		templateString: template,
 		greeting: '',

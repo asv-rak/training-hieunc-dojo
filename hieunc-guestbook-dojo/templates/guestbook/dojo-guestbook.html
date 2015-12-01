@@ -11,22 +11,26 @@
 	      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body>
+<!--config-->
+<script>
+	dojoConfig = {
+		packages: [{
+			name: "guestbook",
+			location: "/static/js/guestbook"
+		}]
+	};
+</script>
+
 <!--dojo-->
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
         data-dojo-config="async: true"></script>
-<!--<script src="/static/bootstrap/js/bootstrap.min.js"></script>-->
+
 
 <script>
 	require([
 		"dojo/parser",
 		"dojo/ready",
-		"/static/js/guestbook/models/Greeting.js",
-		"/static/js/guestbook/store/GreetingStore.js",
-		"/static/js/guestbook/widget/_base/_ViewBaseMixin.js",
-		"/static/js/guestbook/widget/_WidgetGuestBookList.js",
-		"/static/js/guestbook/widget/_WidgetGuestBookGreeting.js",
-		"/static/js/guestbook/widget/_WidgetGuestBookSign.js",
-		"/static/js/guestbook/widget/_WidgetGuestBookEdit.js"
+		"guestbook/widget/_WidgetGuestBookList"
 	], function (parser, ready) {
 		ready(function () {
 			parser.parse();
