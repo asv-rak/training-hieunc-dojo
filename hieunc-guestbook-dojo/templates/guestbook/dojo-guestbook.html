@@ -24,13 +24,11 @@
 <!--dojo-->
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
         data-dojo-config="async: true"></script>
-
-
 <script>
 	require([
 		"dojo/parser",
 		"dojo/ready",
-		"guestbook/widget/_WidgetGuestBookList"
+		"guestbook/widget/WidgetGuestBookList"
 	], function (parser, ready) {
 		ready(function () {
 			parser.parse();
@@ -67,7 +65,7 @@
 
 <div class="col-sm-12">
 	<div class="container">
-		<div data-dojo-type="_WidgetGuestBookList"></div>
+		<div data-dojo-type="guestbook.widget.WidgetGuestBookList"></div>
 	</div>
 </div>
 

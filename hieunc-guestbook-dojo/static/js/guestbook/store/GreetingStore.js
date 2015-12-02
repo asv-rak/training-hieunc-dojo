@@ -9,7 +9,7 @@ define([
 	"dojo/request/xhr",
 	"dojo/cookie"
 ], function (declare, lang, Deferred, xhr, cookie) {
-	return declare("GreetingStore", null, {
+	return declare("guestbook.store.GreetingStore", null, {
 		url: "/api/guestbook/default_guestbook/greeting/",
 		headers: {},
 		method: "get", //get,post,put,del

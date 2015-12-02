@@ -5,7 +5,7 @@
 define([
 	"dojo/_base/declare"
 ], function (declare) {
-	return declare("Greeting", null, {
+	return declare("guestbook.models.Greeting", null, {
 		greetingId: "",
 		content: "",
 		guestbookName: "",

@@ -7,11 +7,9 @@ define([
 	'dijit/_WidgetBase',
 	'dijit/_TemplatedMixin',
 	'dijit/_WidgetsInTemplateMixin',
-	"dojo/dom-construct"
-], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, domConstruct) {
+], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin) {
 
 	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
-		domConstruct: domConstruct,
 
 		buildRendering: function () {
 			this.inherited(arguments);
