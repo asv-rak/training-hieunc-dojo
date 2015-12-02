@@ -7,9 +7,10 @@ define([
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/WidgetGuestBookGreeting.html",
 	"guestbook/models/Greeting",
-	"guestbook/store/GreetingStore"
-	//"models/Greeting"
-], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore) {
+	"guestbook/store/GreetingStore",
+	"dojo/_base/lang",
+	"dojo/on"
+], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore, lang, on) {
 	return declare("guestbook.widget.WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		templateString: template,
 		greeting: '',
@@ -18,6 +19,14 @@ define([
 		constructor: function (kwArgs) {
 			this.inherited(arguments);
 			this.greeting = new Greeting(kwArgs);
+		},
+
+		postCreate: function () {
+			this.inherited(arguments);
+			this.own(
+					on(this.linkMakeEditFormNode, "click", lang.hitch(this, "makeEditForm")),
+					on(this.linkDeleteNode, "click", lang.hitch(this, "delete"))
+			);
 		},
 
 		setWidgetGuestBookList: function (instance) {

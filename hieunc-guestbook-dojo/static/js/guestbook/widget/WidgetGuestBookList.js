@@ -11,9 +11,12 @@ define([
 	"guestbook/widget/WidgetGuestBookSign",
 	"guestbook/widget/WidgetGuestBookEdit",
 	"dojo/dom-construct",
-		"guestbook/store/GreetingStore"
-], function (declare, _ViewBaseMixin, template, array, WidgetGuestBookGreeting, WidgetGuestBookSign, WidgetGuestBookEdit, domConstruct,GreetingStore) {
-	return declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {
+	"guestbook/store/GreetingStore",
+	"dojo/_base/lang",
+	"dojo/on"
+], function (declare, _ViewBaseMixin, template, array, WidgetGuestBookGreeting,
+             WidgetGuestBookSign, WidgetGuestBookEdit, domConstruct, GreetingStore, lang, on) {
+	var wg = declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {
 		templateString: template,
 
 		constructor: function (/*Object*/ kwArgs) {
@@ -22,13 +25,18 @@ define([
 
 		postCreate: function () {
 			this.inherited(arguments);
+
 			var guestbookSignWidget = new WidgetGuestBookSign({
-						widgetGuestBookGetListParent: this,
-						guestbook_name: this.GuestBookNameNode.value
-					})
-					;
+				widgetGuestBookGetListParent: this,
+				guestbook_name: this.GuestBookNameNode.value
+			});
+
 			domConstruct.place(guestbookSignWidget.domNode, this.GuestBookSignNode);
 			this.getList();
+
+			this.own(
+					on(this.btnGetListNode, "click", lang.hitch(this, "getList"))
+			);
 		},
 
 		getList: function () {

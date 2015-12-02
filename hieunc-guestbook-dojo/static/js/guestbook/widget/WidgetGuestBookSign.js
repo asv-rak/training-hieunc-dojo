@@ -7,8 +7,10 @@ define([
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/WidgetGuestBookSign.html",
 	"guestbook/models/Greeting",
-	"guestbook/store/GreetingStore"
-], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore) {
+	"guestbook/store/GreetingStore",
+	"dojo/_base/lang",
+	"dojo/on"
+], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore, lang, on) {
 	return declare("guestbook.widget.WidgetGuestBookSign", [_ViewBaseMixin], {
 		templateString: template,
 		_guesbookName: "guestbook_default",
@@ -22,6 +24,10 @@ define([
 		postCreate: function () {
 			this.inherited(arguments);
 			this.GuestBookNameNode.value = this._guesbookName;
+
+			this.own(
+					on(this.btnGuestbookSignNode, "click", lang.hitch(this, "createNew"))
+			);
 		},
 
 		createNew: function () {

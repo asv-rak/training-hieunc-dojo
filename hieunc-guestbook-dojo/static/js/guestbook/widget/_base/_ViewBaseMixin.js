@@ -8,7 +8,6 @@ define([
 	'dijit/_TemplatedMixin',
 	'dijit/_WidgetsInTemplateMixin',
 ], function (declare, domClass, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin) {
-
 	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
 		buildRendering: function () {

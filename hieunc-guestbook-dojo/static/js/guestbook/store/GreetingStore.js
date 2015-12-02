@@ -9,7 +9,7 @@ define([
 	"dojo/request/xhr",
 	"dojo/cookie"
 ], function (declare, lang, Deferred, xhr, cookie) {
-	return declare("guestbook.store.GreetingStore", null, {
+	var widgetGuestbookList = declare("guestbook.store.GreetingStore", null, {
 		url: "/api/guestbook/default_guestbook/greeting/",
 		headers: {},
 		method: "get", //get,post,put,del
@@ -91,8 +91,10 @@ define([
 				"guestbook_mesage": greeting.content,
 				"greeting_id": greeting.greetingId
 			};
-			this.expect = "httpStatus";
+			this.expect = "json";
 			this._getResult();
 		}
 	});
+
+	return widgetGuestbookList;
 });
