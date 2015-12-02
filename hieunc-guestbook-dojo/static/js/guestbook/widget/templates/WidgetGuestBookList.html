@@ -1,40 +1,40 @@
-<div class="col-sm-12">
-	<div class="col-sm-12" data-dojo-attach-point="GuestBookSignNode"
+<div>
+	<div data-dojo-attach-point="GuestBookSignNode"
 	     style="padding: 0; margin-top: 25px;"></div>
 
-	<div class="col-sam-12" data-dojo-attach-point="GuestBookEditNode"></div>
+	<div data-dojo-attach-point="GuestBookEditNode"></div>
 
-	<hr class="col-sm-12">
+	<hr>
 
-	<div class="col-sm-12" style="padding: 0;margin-top: 25px;">
-		<div class="col-sm-6">
+	<div style="padding: 0;margin-top: 25px;">
+		<div>
 			<input data-dojo-attach-point="GuestBookNameNode"
 			       value="default_guestbook"
-			       type="text" class="form-control"
+			       type="text"
 			       placeholder="Guestbook name"/>
 		</div>
-		<div class="col-sm-6">
+		<div>
 			<button class="btn btn-default" data-dojo-attach-point="btnGetListNode">
 				Get Greeting
 			</button>
 		</div>
 	</div>
 
-	<div class="col-sm-12" style="margin-top: 25px;">
-		<div class="panel panel-default">
+	<div style="margin-top: 25px;">
+		<div>
 			<!-- Default panel contents -->
-			<div class="panel-heading" data-dojo-attach-point="guestbook_list_header">
+			<div data-dojo-attach-point="guestbook_list_header">
 				default_guestbook
 			</div>
 			<!-- Table -->
-			<table class="table">
+			<table>
 				<thead>
 				<td>Content</td>
 				<td>Guestbook</td>
 				<td>Date</td>
 				<td>Update</td>
 				<td>By</td>
-				<td>Action</td>
+				<td colspan="2">Action</td>
 				</thead>
 				<tbody data-dojo-attach-point="guestbook_list_content"></tbody>
 			</table>

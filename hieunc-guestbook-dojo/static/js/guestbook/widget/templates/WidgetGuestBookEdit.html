@@ -1,7 +1,7 @@
 <div>
 	<h2>Edit Form</h2>
 
-	<div class="col-sm-12" style="padding: 0; margin-top: 25px;">
+	<div style="padding: 0; margin-top: 25px;">
 
 		<input data-dojo-attach-point="GuestBookNameNode"
 		       type="hidden" value="${greeting.guestbookName}"/>
@@ -10,8 +10,8 @@
 		       value="${greeting.greetingId}"
 		       type="hidden"/>
 
-		<div class="col-sm-12">
-			<div class="col-sm-12" style="padding-left: 0">
+		<div>
+			<div style="padding-left: 0">
 				<label class="text-capitalize text-center">Greeting Name</label>
 			</div>
 			<div class="col-sm-6" style="padding-left: 0;">
@@ -21,7 +21,7 @@
 				       placeholder="Greeting name"/>
 			</div>
 			<div class="col-sm-6">
-				<button data-dojo-attach-point="btnEditGreetingNode" class="btn btn-success">
+				<button data-dojo-attach-point="btnEditGreetingNode">
 					Save
 				</button>
 			</div>
