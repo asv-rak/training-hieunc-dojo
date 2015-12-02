@@ -4,19 +4,19 @@
 
 define([
 	"dojo/_base/declare",
-	"guestbook/widget/_base/_ViewBaseMixin",
-	"dojo/text!./templates/WidgetGuestBookList.html",
+	"dojo/_base/lang",
 	"dojo/_base/array",
+	"dojo/dom-construct",
+	"dojo/on",
+	"dojo/text!./templates/WidgetGuestBookList.html",
+	"guestbook/widget/_base/_ViewBaseMixin",
+	"guestbook/store/GreetingStore",
 	"guestbook/widget/WidgetGuestBookGreeting",
 	"guestbook/widget/WidgetGuestBookSign",
-	"guestbook/widget/WidgetGuestBookEdit",
-	"dojo/dom-construct",
-	"guestbook/store/GreetingStore",
-	"dojo/_base/lang",
-	"dojo/on"
-], function (declare, _ViewBaseMixin, template, array, WidgetGuestBookGreeting,
-             WidgetGuestBookSign, WidgetGuestBookEdit, domConstruct, GreetingStore, lang, on) {
-	var wg = declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {
+	"guestbook/widget/WidgetGuestBookEdit"
+], function (declare, lang, array, domConstruct, on, template, _ViewBaseMixin, GreetingStore, WidgetGuestBookGreeting,
+             WidgetGuestBookSign, WidgetGuestBookEdit) {
+	return declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {
 		templateString: template,
 
 		constructor: function (/*Object*/ kwArgs) {

@@ -47,10 +47,10 @@ define([
 					function (error) {
 						console.log(error);
 					},
-					function (e) {
+					function (extra) {
 						if (_self.expect === "httpStatus") {
-							console.log(e);
-							_def.resolve(e);
+							console.log(extra);
+							_def.resolve(extra);
 						}
 					}
 			);
@@ -68,7 +68,7 @@ define([
 			this.url = "/api/guestbook/" + guestbook_name + "/greeting/" + greeting_id;
 			this.headers = {"X-CSRFToken": cookie("csrftoken")};
 			this.method = "del";
-			this.expect = "httpStatus";
+			this.expect = "json";
 			this.handleAs = "";
 			this._getResult();
 		},

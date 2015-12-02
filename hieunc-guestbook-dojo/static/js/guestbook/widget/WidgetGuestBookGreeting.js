@@ -42,11 +42,11 @@ define([
 		},
 
 		delete: function () {
-			var self = this;
+			var fnDestroyGreeting = lang.hitch(this, "destroy");
 			if (this.greeting.isAdmin || this.greeting.updatedBy == this.greeting.userInfo) {
 				var greetingStore = new GreetingStore({
 					callBack: function (result) {
-						console.log(result)
+						fnDestroyGreeting();
 					},
 					errCallBack: function (err) {
 						console.log(err)
@@ -54,7 +54,6 @@ define([
 				});
 
 				greetingStore.deleteGreeting(this.greeting.guestbookName, this.greeting.greetingId);
-				self.domNode.remove()
 			} else {
 				alert("Permission denied!")
 			}

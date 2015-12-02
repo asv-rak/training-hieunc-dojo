@@ -4,13 +4,13 @@
 
 define([
 	"dojo/_base/declare",
+	"dojo/_base/lang",
+	"dojo/on",
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/WidgetGuestBookSign.html",
 	"guestbook/models/Greeting",
-	"guestbook/store/GreetingStore",
-	"dojo/_base/lang",
-	"dojo/on"
-], function (declare, _ViewBaseMixin, template, Greeting, GreetingStore, lang, on) {
+	"guestbook/store/GreetingStore"
+], function (declare, lang, on, _ViewBaseMixin, template, Greeting, GreetingStore) {
 	return declare("guestbook.widget.WidgetGuestBookSign", [_ViewBaseMixin], {
 		templateString: template,
 		_guesbookName: "guestbook_default",
