@@ -6,16 +6,16 @@ define([
 	"dojo/_base/declare",
 	"dojo/_base/lang",
 	"dojo/_base/array",
+	"dojo/topic",
 	"dojo/dom-construct",
 	"dojo/on",
 	"dojo/text!./templates/WidgetGuestBookList.html",
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"guestbook/store/GreetingStore",
 	"guestbook/widget/WidgetGuestBookGreeting",
-	"guestbook/widget/WidgetGuestBookSign",
-	"guestbook/widget/WidgetGuestBookEdit"
-], function (declare, lang, array, domConstruct, on, template, _ViewBaseMixin, GreetingStore, WidgetGuestBookGreeting,
-             WidgetGuestBookSign, WidgetGuestBookEdit) {
+	"guestbook/widget/WidgetGuestBookSign"
+], function (declare, lang, array, topic, domConstruct, on, template, _ViewBaseMixin, GreetingStore, WidgetGuestBookGreeting,
+             WidgetGuestBookSign) {
 	return declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {
 		templateString: template,
 
@@ -27,15 +27,19 @@ define([
 			this.inherited(arguments);
 
 			var guestbookSignWidget = new WidgetGuestBookSign({
-				widgetGuestBookGetListParent: this,
 				guestbook_name: this.GuestBookNameNode.value
 			});
 
 			domConstruct.place(guestbookSignWidget.domNode, this.GuestBookSignNode);
-			this.getList();
-
+			var fnGetList = lang.hitch(this, "getList");
+			fnGetList();
 			this.own(
-					on(this.btnGetListNode, "click", lang.hitch(this, "getList"))
+					on(this.btnGetListNode, "click", fnGetList),
+					topic.subscribe("refreshList/topic", function (e) {
+						if (e.fnName == "fnGetList") {
+							fnGetList();
+						}
+					})
 			);
 		},
 
@@ -50,7 +54,6 @@ define([
 						var greeting;
 						array.forEach(data.greetings, function (jsonGreeting) {
 							greeting = new WidgetGuestBookGreeting(jsonGreeting);
-							greeting.setWidgetGuestBookList(widgetGuestBookGetListParent);
 							domConstruct.place(greeting.domNode, listContent);
 						});
 					},
@@ -60,16 +63,6 @@ define([
 				});
 				greetingStore.getGreetingList(this.GuestBookNameNode.value);
 			}
-		},
-
-		generateEditForm: function (greeting) {
-			var guesbookEditWidget = new WidgetGuestBookEdit({
-				"greeting": greeting,
-				"widgetGuestBookGetListParent": this
-			});
-			this.GuestBookEditNode.innerHTML = '';
-			domConstruct.place(guesbookEditWidget.domNode, this.GuestBookEditNode);
 		}
-
 	});
 });

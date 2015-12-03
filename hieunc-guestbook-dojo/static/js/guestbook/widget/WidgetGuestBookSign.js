@@ -5,19 +5,18 @@
 define([
 	"dojo/_base/declare",
 	"dojo/_base/lang",
+	"dojo/topic",
 	"dojo/on",
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/WidgetGuestBookSign.html",
 	"guestbook/models/Greeting",
 	"guestbook/store/GreetingStore"
-], function (declare, lang, on, _ViewBaseMixin, template, Greeting, GreetingStore) {
+], function (declare, lang, topic, on, _ViewBaseMixin, template, Greeting, GreetingStore) {
 	return declare("guestbook.widget.WidgetGuestBookSign", [_ViewBaseMixin], {
 		templateString: template,
 		_guesbookName: "guestbook_default",
-		_parentWidget: "",
 
 		constructor: function (kwArgs) {
-			this._parentWidget = kwArgs.widgetGuestBookGetListParent;
 			this._guesbookName = kwArgs.guestbook_name;
 		},
 
@@ -48,7 +47,7 @@ define([
 
 				greetingStore.createNewGreeting(greeting);
 				this.GuestBookGreetingNameNode.value = "";
-				this._parentWidget.getList();
+				topic.publish("refreshList/topic", {fnName: "fnGetList"});
 				alert("Sign up successly!")
 			} else {
 				alert("Validate failed!")
