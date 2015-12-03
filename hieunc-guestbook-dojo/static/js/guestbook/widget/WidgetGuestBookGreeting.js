@@ -5,16 +5,15 @@
 define([
 	"dojo/_base/declare",
 	"dojo/_base/lang",
+	"dojo/text!./templates/WidgetGuestBookGreeting.html",
 	"dojo/dom-construct",
 	"dojo/dom-attr",
-	"dijit/registry",
 	"dojo/on",
 	"dijit/form/TextBox",
 	"guestbook/widget/_base/_ViewBaseMixin",
-	"dojo/text!./templates/WidgetGuestBookGreeting.html",
 	"guestbook/models/Greeting",
 	"guestbook/store/GreetingStore"
-], function (declare, lang, domConstruct, domAttr, registry, on, TextBox, _ViewBaseMixin, template, Greeting, GreetingStore) {
+], function (declare, lang, template, domConstruct, domAttr, on, TextBox, _ViewBaseMixin, Greeting, GreetingStore) {
 	return declare("guestbook.widget.WidgetGuestBookGreeting", [_ViewBaseMixin], {
 		_txtBoxInputGreetingContent: null,
 		templateString: template,
@@ -31,8 +30,7 @@ define([
 					on(this.linkMakeEditFormNode, "click", lang.hitch(this, "updateGreeting")),
 					on(this.linkDeleteNode, "click", lang.hitch(this, "delete"))
 			);
-		}
-		,
+		},
 
 		updateGreeting: function (label) {
 			var task = domAttr.get(this.linkMakeEditFormNode, "task");
@@ -46,10 +44,12 @@ define([
 			} else {
 				if (this._txtBoxInputGreetingContent.value) {
 					this.greeting.content = this._txtBoxInputGreetingContent.value;
-					var fnDestroyInputGreetingContent = lang.hitch(this._txtBoxInputGreetingContent, "destroy");
+
+					var fnDestroyInputGreetingContent = lang.hitch(this, function () {
+						domConstruct.destroy(this._txtBoxInputGreetingContent);
+					});
 					var greetingStore = new GreetingStore({
 						callBack: function (result) {
-							fnDestroyInputGreetingContent();
 							alert("Edit greeting success!")
 						},
 						errCallBack: function (err) {

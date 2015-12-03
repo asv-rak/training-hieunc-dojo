@@ -31,13 +31,11 @@ define([
 			});
 
 			domConstruct.place(guestbookSignWidget.domNode, this.guestBookSignNode);
-			var fnGetList = lang.hitch(this, "getList");
-			fnGetList();
+
+			this.getList();
 			this.own(
-					on(this.btnGetListNode, "click", fnGetList),
-					topic.subscribe("guestbook.widget. WidgetGuestBookList.refreshList/topic", function () {
-						fnGetList();
-					})
+					on(this.btnGetListNode, "click", lang.hitch(this, "getList")),
+					topic.subscribe("guestbook.widget. WidgetGuestBookList.refreshList/topic", lang.hitch(this, "getList"))
 			);
 		},
 
