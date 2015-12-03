@@ -19,6 +19,7 @@ define([
 
 		callBack: function (result) {
 		},
+
 		errCallBack: function (err) {
 			console.log(err)
 		},
@@ -28,31 +29,28 @@ define([
 		},
 
 		_getResult: function () {
-			var _self = this;
 			var _def = new Deferred();
 			_def.then(this.callBack, this.errCallBack);
 
-			xhr[this.method](_self.url, {
-				//sync: true,
-				headers: _self.headers,
-				preventCache: _self.preventCache,
-				data: _self.postData,
-				handleAs: _self.handleAs
+			xhr[this.method](this.url, {
+				headers: this.headers,
+				preventCache: true,
+				data: this.postData,
+				handleAs: this.handleAs
 			}).then(
-					function (data) {
-						if (_self.expect === "json") {
+					lang.hitch(this, function (data) {
+						if (this.expect === "json") {
 							_def.resolve(data);
 						}
-					},
+					}),
 					function (error) {
 						console.log(error);
 					},
-					function (extra) {
-						if (_self.expect === "httpStatus") {
-							console.log(extra);
+					lang.hitch(this, function (extra) {
+						if (this.expect === "httpStatus") {
 							_def.resolve(extra);
 						}
-					}
+					})
 			);
 		},
 
