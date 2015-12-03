@@ -22,7 +22,7 @@ define([
 
 		postCreate: function () {
 			this.inherited(arguments);
-			this.GuestBookNameNode.value = this._guesbookName;
+			this.guestBookNameNode.value = this._guesbookName;
 
 			this.own(
 					on(this.btnGuestbookSignNode, "click", lang.hitch(this, "createNew"))
@@ -30,10 +30,10 @@ define([
 		},
 
 		createNew: function () {
-			if (this.GuestBookNameNode.value && this.GuestBookGreetingNameNode.value) {
+			if (this.guestBookNameNode.value && this.guestBookGreetingNameNode.value) {
 				var greeting = {
-					"guestbook_mesage": this.GuestBookGreetingNameNode.value,
-					"guestbook_name": this.GuestBookNameNode.value
+					"guestbook_mesage": this.guestBookGreetingNameNode.value,
+					"guestbook_name": this.guestBookNameNode.value
 				};
 
 				var greetingStore = new GreetingStore({
@@ -46,7 +46,7 @@ define([
 				});
 
 				greetingStore.createNewGreeting(greeting);
-				this.GuestBookGreetingNameNode.value = "";
+				this.guestBookGreetingNameNode.value = "";
 				topic.publish("guestbook.widget. WidgetGuestBookList.refreshList/topic", {});
 				alert("Sign up successly!")
 			} else {
