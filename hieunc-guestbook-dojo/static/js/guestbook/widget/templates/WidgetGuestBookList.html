@@ -1,14 +1,11 @@
 <div>
-	<div data-dojo-attach-point="GuestBookSignNode"
+	<div data-dojo-attach-point="guestBookSignNode"
 	     style="padding: 0; margin-top: 25px;"></div>
-
-	<div data-dojo-attach-point="GuestBookEditNode"></div>
-
-	<hr>
+	
 
 	<div style="padding: 0;margin-top: 25px;">
 		<div>
-			<input data-dojo-attach-point="GuestBookNameNode"
+			<input data-dojo-attach-point="guestBookNameNode"
 			       value="default_guestbook"
 			       type="text"
 			       placeholder="Guestbook name"/>
@@ -22,10 +19,6 @@
 
 	<div style="margin-top: 25px;">
 		<div>
-			<!-- Default panel contents -->
-			<div data-dojo-attach-point="guestbook_list_header">
-				default_guestbook
-			</div>
 			<!-- Table -->
 			<table>
 				<thead>
@@ -36,7 +29,7 @@
 				<td>By</td>
 				<td colspan="2">Action</td>
 				</thead>
-				<tbody data-dojo-attach-point="guestbook_list_content"></tbody>
+				<tbody data-dojo-attach-point="guestbookListContentNode"></tbody>
 			</table>
 		</div>
 	</div>

@@ -47,7 +47,7 @@ define([
 
 				greetingStore.createNewGreeting(greeting);
 				this.GuestBookGreetingNameNode.value = "";
-				topic.publish("refreshList/topic", {fnName: "fnGetList"});
+				topic.publish("guestbook.widget. WidgetGuestBookList.refreshList/topic", {});
 				alert("Sign up successly!")
 			} else {
 				alert("Validate failed!")

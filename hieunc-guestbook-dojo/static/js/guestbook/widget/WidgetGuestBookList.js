@@ -27,28 +27,24 @@ define([
 			this.inherited(arguments);
 
 			var guestbookSignWidget = new WidgetGuestBookSign({
-				guestbook_name: this.GuestBookNameNode.value
+				guestbook_name: this.guestBookNameNode.value
 			});
 
-			domConstruct.place(guestbookSignWidget.domNode, this.GuestBookSignNode);
+			domConstruct.place(guestbookSignWidget.domNode, this.guestBookSignNode);
 			var fnGetList = lang.hitch(this, "getList");
 			fnGetList();
 			this.own(
 					on(this.btnGetListNode, "click", fnGetList),
-					topic.subscribe("refreshList/topic", function (e) {
-						if (e.fnName == "fnGetList") {
-							fnGetList();
-						}
+					topic.subscribe("guestbook.widget. WidgetGuestBookList.refreshList/topic", function () {
+						fnGetList();
 					})
 			);
 		},
 
 		getList: function () {
-			if (this.GuestBookNameNode.value) {
-				var listContent = this.guestbook_list_content;
+			if (this.guestBookNameNode.value) {
+				var listContent = this.guestbookListContentNode;
 				listContent.innerHTML = '';
-				var widgetGuestBookGetListParent = this;
-				this.guestbook_list_header.innerHTML = this.GuestBookNameNode.value;
 				var greetingStore = new GreetingStore({
 					callBack: function (data) {
 						var greeting;
@@ -61,7 +57,7 @@ define([
 						console.log(err)
 					}
 				});
-				greetingStore.getGreetingList(this.GuestBookNameNode.value);
+				greetingStore.getGreetingList(this.guestBookNameNode.value);
 			}
 		}
 	});
