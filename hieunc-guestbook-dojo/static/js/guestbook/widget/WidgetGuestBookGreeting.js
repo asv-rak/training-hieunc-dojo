@@ -39,8 +39,8 @@ define([
 
 			if (task == "frmCreate") {
 				this._txtBoxInputGreetingContent = new TextBox({value: this.greeting.content});
-				domConstruct.empty(this.GreetingContentNode);
-				domConstruct.place(this._txtBoxInputGreetingContent.domNode, this.GreetingContentNode);
+				domConstruct.empty(this.greetingContentNode);
+				domConstruct.place(this._txtBoxInputGreetingContent.domNode, this.greetingContentNode);
 				this.linkMakeEditFormNode.innerHTML = "Update";
 				domAttr.set(this.linkMakeEditFormNode, "task", "frmSave");
 			} else {
@@ -57,8 +57,8 @@ define([
 						}
 					});
 					greetingStore.updateGreeting(this.greeting);
-					domConstruct.empty(this.GreetingContentNode);
-					this.GreetingContentNode.innerHTML = this.greeting.content;
+					domConstruct.empty(this.greetingContentNode);
+					this.greetingContentNode.innerHTML = this.greeting.content;
 				} else {
 					alert("Validate failed!")
 				}
