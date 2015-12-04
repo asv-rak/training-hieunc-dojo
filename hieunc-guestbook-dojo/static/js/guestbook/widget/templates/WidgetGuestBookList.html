@@ -1,0 +1,39 @@
+<div>
+	<div data-dojo-attach-point="guestBookSignNode"
+	     style="padding: 0; margin-top: 25px;"></div>
+	
+
+	<div style="padding: 0;margin-top: 25px;">
+		<div>
+			<input data-dojo-attach-point="guestBookNameNode"
+			       value="default_guestbook"
+			       type="text"
+			       data-dojo-type="dijit/form/TextBox"
+			       placeholder="Guestbook name"/>
+		</div>
+		<div>
+			<button data-dojo-attach-point="btnGetListNode" data-dojo-type="dijit/form/Button">
+				Get Greeting
+			</button>
+		</div>
+	</div>
+
+	<div style="margin-top: 25px;">
+		<div>
+			<!-- Table -->
+			<table>
+				<thead>
+				<td>Content</td>
+				<td>Guestbook</td>
+				<td>Date</td>
+				<td>Update</td>
+				<td>By</td>
+				<td colspan="2">Action</td>
+				</thead>
+				<tbody>
+				<div data-dojo-attach-point="guestbookListContentNode"></div>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

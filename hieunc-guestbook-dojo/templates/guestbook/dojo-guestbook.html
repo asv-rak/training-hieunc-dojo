@@ -2,15 +2,49 @@
 <html lang="en">
 <head>
 	<title>Dojo Guestbook</title>
+	<!--config-->
+	<script>
+		dojoConfig = {
+			packages: [{
+				name: "guestbook",
+				location: "/static/js/guestbook"
+			}]
+		};
+	</script>
+
+	<!--dojo-->
+	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+	        data-dojo-config="async: true"></script>
+	<script>
+		require([
+			"dojo/parser",
+			"dojo/ready",
+			"guestbook/widget/WidgetGuestBookList"
+		], function (parser, ready) {
+			ready(function () {
+				parser.parse();
+			});
+		});
+	</script>
+	<style>
+		table td {
+			border: solid 1px;
+		}
+	</style>
 </head>
 <body>
+<nav>
+	<a href="{{ url }}">
+		{{ url_linktext }}
+	</a>
+</nav>
 
 <div>
-	Dojo Guestbook
-	<br>
-	<!-- visit guestbook/views.py:151 for more information -->
-	<a href="{{ url }}">{{ url_linktext }}</a>
+	<div>
+		<div data-dojo-type="guestbook.widget.WidgetGuestBookList"></div>
+	</div>
 </div>
 
+</footer>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<tr>
+	<input type="hidden" data-dojo-attach-point="GreetingIdNode"
+	        data-dojo-type="dijit/form/TextBox"
+	       value="${greeting.greetingId}"/>
+	<td>
+		<span data-dojo-attach-point="greetingContentNode">${greeting.content}</span>
+	</td>
+	<td>
+		<span data-dojo-attach-point="greetingGuestbookNameNode">${greeting.guestbookName}</span>
+	</td>
+	<td>
+		<span data-dojo-attach-point="greetingDateNode">${greeting.date}</span>
+	</td>
+	<td>
+		<span data-dojo-attach-point="greetingUpdatedDateNode">${greeting.updatedDate}</span>
+	</td>
+	<td>
+		<span data-dojo-attach-point="greetingUpdatedByNode">${greeting.updatedBy}</span>
+	</td>
+	<td>
+		<button data-dojo-attach-point="linkMakeEditFormNode" task="frmCreate"
+		        data-dojo-type="dijit/form/Button">
+			Edit
+		</button>
+	</td>
+	<td>
+		<button data-dojo-attach-point="linkDeleteNode" data-dojo-type="dijit/form/Button">
+			Delete
+		</button>
+	</td>
+</tr>
