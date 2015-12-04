@@ -13,7 +13,9 @@ define([
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"guestbook/store/GreetingStore",
 	"guestbook/widget/WidgetGuestBookGreeting",
-	"guestbook/widget/WidgetGuestBookSign"
+	"guestbook/widget/WidgetGuestBookSign",
+	"dijit/form/TextBox",
+	"dijit/form/Button"
 ], function (declare, lang, array, topic, domConstruct, on, template, _ViewBaseMixin, GreetingStore, WidgetGuestBookGreeting,
              WidgetGuestBookSign) {
 	return declare("guestbook.widget.WidgetGuestBookList", [_ViewBaseMixin], {

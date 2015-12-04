@@ -10,7 +10,9 @@ define([
 	"guestbook/widget/_base/_ViewBaseMixin",
 	"dojo/text!./templates/WidgetGuestBookSign.html",
 	"guestbook/models/Greeting",
-	"guestbook/store/GreetingStore"
+	"guestbook/store/GreetingStore",
+	"dijit/form/Button",
+	"dijit/form/TextBox"
 ], function (declare, lang, topic, on, _ViewBaseMixin, template, Greeting, GreetingStore) {
 	return declare("guestbook.widget.WidgetGuestBookSign", [_ViewBaseMixin], {
 		templateString: template,

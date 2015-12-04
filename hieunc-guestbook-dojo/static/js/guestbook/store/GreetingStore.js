@@ -29,7 +29,9 @@ define([
 		},
 
 		_getResult: function () {
-			var _def = new Deferred();
+			var _def = new Deferred(function (reason) {
+				console.log(reason);
+			});
 			_def.then(this.callBack, this.errCallBack);
 
 			xhr[this.method](this.url, {
@@ -44,7 +46,7 @@ define([
 						}
 					}),
 					function (error) {
-						console.log(error);
+						_def.reject(error);
 					},
 					lang.hitch(this, function (extra) {
 						if (this.expect === "httpStatus") {

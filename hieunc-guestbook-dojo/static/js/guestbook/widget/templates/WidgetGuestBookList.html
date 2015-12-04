@@ -8,10 +8,11 @@
 			<input data-dojo-attach-point="guestBookNameNode"
 			       value="default_guestbook"
 			       type="text"
+			       data-dojo-type="dijit/form/TextBox"
 			       placeholder="Guestbook name"/>
 		</div>
 		<div>
-			<button data-dojo-attach-point="btnGetListNode">
+			<button data-dojo-attach-point="btnGetListNode" data-dojo-type="dijit/form/Button">
 				Get Greeting
 			</button>
 		</div>
@@ -29,7 +30,9 @@
 				<td>By</td>
 				<td colspan="2">Action</td>
 				</thead>
-				<tbody data-dojo-attach-point="guestbookListContentNode"></tbody>
+				<tbody>
+				<div data-dojo-attach-point="guestbookListContentNode"></div>
+				</tbody>
 			</table>
 		</div>
 	</div>
